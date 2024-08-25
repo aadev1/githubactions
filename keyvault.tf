@@ -5,6 +5,9 @@ resource "azurerm_key_vault" "example" {
   enabled_for_disk_encryption = true
   tenant_id                   = data.azurerm_client_config.current.tenant_id
   purge_protection_enabled    = false
+  tags = {
+    ServiceCode = "CDO"
+  }
 
   sku_name = "standard"
 }
