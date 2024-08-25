@@ -7,7 +7,7 @@ resource "azurerm_key_vault" "example" {
   purge_protection_enabled    = false
   tags = {
     ServiceCode = "CDO"
-    tag1        = "value1"
+    tag1        = "value2"
   }
 
   sku_name = "standard"
