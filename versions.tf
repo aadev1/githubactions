@@ -24,6 +24,7 @@ provider "azurerm" {
   subscription_id = "a905f68e-daad-4402-a2a6-dacfeb83534d"
 }
 
+data "azurerm_client_config" "current" {}
 
 /*
 Play with Terraform CLI Version (We installed 1.0.0 version)
