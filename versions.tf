@@ -13,11 +13,13 @@ terraform {
     storage_account_name = "aatest1234"
     container_name       = "tfstatefiles"
     key                  = "terraform.tfstate"
+    use_oidc             = true
   }
 }
 # Provider Block
 provider "azurerm" {
   features {}
+  use_oidc = true
 
   subscription_id = "a905f68e-daad-4402-a2a6-dacfeb83534d"
 }
