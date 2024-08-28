@@ -9,7 +9,7 @@ jobs:
   deploy-dev:
     uses: ./.github/workflows/terraform-reusable.yml
     with:
-      environment: dev
+      environment: DEV
       branch: main
 
   # deploy-test:
