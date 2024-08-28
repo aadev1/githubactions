@@ -21,10 +21,10 @@ terraform {
   #   use_oidc             = true
   # }
   backend "azurerm" {
-    resource_group_name  = "aatest"
-    storage_account_name = "aatest1234"
-    container_name       = "tfstatefiles"
-    key                  = "terraform.tfstate"
+    # resource_group_name  = "aatest"
+    # storage_account_name = "aatest1234"
+    # container_name       = "tfstatefiles"
+    # key                  = "terraform.tfstate"
     use_oidc             = true
   }
 }
