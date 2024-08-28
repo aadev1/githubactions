@@ -1,0 +1,27 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - main  # Run on push to main branch
+
+jobs:
+  deploy-dev:
+    uses: ./.github/workflows/terraform-reusable.yml
+    with:
+      environment: dev
+      branch: main
+
+  # deploy-test:
+  #   uses: ./.github/workflows/terraform-reusable.yml
+  #   needs: deploy-dev
+  #   with:
+  #     environment: test
+  #     branch: main
+
+  # deploy-pre:
+  #   uses: ./.github/workflows/terraform-reusable.yml
+  #   needs: deploy-test
+  #   with:
+  #     environment: pre
+  #     branch: main
