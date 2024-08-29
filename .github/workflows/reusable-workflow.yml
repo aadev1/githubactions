@@ -26,6 +26,7 @@ jobs:
       ARM_SKIP_PROVIDER_REGISTRATION: true
     outputs:
       tfplanExitCode: ${{ steps.tf-plan.outputs.exitcode }}
+    environment: ${{ inputs.environment }}
 
     steps:
     # Checkout the repository to the GitHub Actions runner
