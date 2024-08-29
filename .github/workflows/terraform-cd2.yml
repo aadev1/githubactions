@@ -23,7 +23,7 @@ jobs:
 
   deploy-test:
     uses: ./.github/workflows/reusable-workflow.yml
-    # needs: deploy-dev
+    needs: deploy-dev
     with:
       environment: tst
       branch: main
