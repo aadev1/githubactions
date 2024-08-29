@@ -5,6 +5,10 @@ on:
     branches:
       - main  # Run on push to main branch
 
+permissions:
+  id-token: write
+  pull-requests: write      
+
 jobs:
   deploy-dev:
     uses: ./.github/workflows/terraform-reusable.yml
