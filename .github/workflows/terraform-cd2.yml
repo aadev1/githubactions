@@ -24,3 +24,4 @@ jobs:
     with:
       environment: dev
       branch: main
+    secrets: inherit
