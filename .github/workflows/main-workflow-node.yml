@@ -1,0 +1,16 @@
+name: 'Main Workflow'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  use-reusable-workflow:
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      node-version: '14'
+      run-tests: 'true'
