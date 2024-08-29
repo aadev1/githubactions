@@ -1,0 +1,13 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/terraform-reusable.yml
+    with:
+      environment: dev
+      branch: main
