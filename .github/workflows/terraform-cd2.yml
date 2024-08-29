@@ -28,3 +28,11 @@ jobs:
       environment: tst
       branch: main
     secrets: inherit
+  
+  deploy-pre:
+    uses: ./.github/workflows/reusable-workflow.yml
+    needs: deploy-tst
+    with:
+      environment: pre
+      branch: main
+    secrets: inherit
