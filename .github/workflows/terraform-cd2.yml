@@ -31,7 +31,7 @@ jobs:
   
   deploy-pre:
     uses: ./.github/workflows/reusable-workflow.yml
-    needs: deploy-tst
+    needs: deploy-test
     with:
       environment: pre
       branch: main
