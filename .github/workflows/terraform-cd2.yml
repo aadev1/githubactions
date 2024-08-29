@@ -25,7 +25,6 @@ permissions:
 
 jobs:
   deploy-dev:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     uses: ./.github/workflows/reusable-workflow.yml
     with:
       environment: dev
