@@ -17,10 +17,10 @@ permissions:
   contents: read
   pull-requests: write
 
-env:
-  ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
-  ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-  ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
+# env:
+#   ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
+#   ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
+#   ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
 
 jobs:
   terraform-plan:
@@ -40,8 +40,19 @@ jobs:
       with:
         terraform_wrapper: false
 
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets['AZURE_CLIENT_ID_' + inputs.environment | upper] }}
+        tenant-id: ${{ secrets['AZURE_TENANT_ID_' + inputs.environment | upper] }}
+        subscription-id: ${{ secrets['AZURE_SUBSCRIPTION_ID_' + inputs.environment | upper] }}
+
     - name: Terraform Init
       run: terraform init -backend-config=backend-${{ inputs.environment }}.conf
+      env:
+        ARM_CLIENT_ID: ${{ secrets['AZURE_CLIENT_ID_' + inputs.environment | upper] }}
+        ARM_SUBSCRIPTION_ID: ${{ secrets['AZURE_SUBSCRIPTION_ID_' + inputs.environment | upper] }}
+        ARM_TENANT_ID: ${{ secrets['AZURE_TENANT_ID_' + inputs.environment | upper] }}
 
     - name: Terraform Format
       run: terraform fmt -check
@@ -119,8 +130,19 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
 
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets['AZURE_CLIENT_ID_' + inputs.environment | upper] }}
+        tenant-id: ${{ secrets['AZURE_TENANT_ID_' + inputs.environment | upper] }}
+        subscription-id: ${{ secrets['AZURE_SUBSCRIPTION_ID_' + inputs.environment | upper] }}
+
     - name: Terraform Init
       run: terraform init -backend-config=backend-${{ inputs.environment }}.conf
+      env:
+        ARM_CLIENT_ID: ${{ secrets['AZURE_CLIENT_ID_' + inputs.environment | upper] }}
+        ARM_SUBSCRIPTION_ID: ${{ secrets['AZURE_SUBSCRIPTION_ID_' + inputs.environment | upper] }}
+        ARM_TENANT_ID: ${{ secrets['AZURE_TENANT_ID_' + inputs.environment | upper] }}
 
     - name: Download Terraform Plan
       uses: actions/download-artifact@v4
@@ -129,3 +151,7 @@ jobs:
 
     - name: Terraform Apply
       run: terraform apply -auto-approve tfplan
+      env:
+        ARM_CLIENT_ID: ${{ secrets['AZURE_CLIENT_ID_' + inputs.environment | upper] }}
+        ARM_SUBSCRIPTION_ID: ${{ secrets['AZURE_SUBSCRIPTION_ID_' + inputs.environment | upper] }}
+        ARM_TENANT_ID: ${{ secrets['AZURE_TENANT_ID_' + inputs.environment | upper] }}
