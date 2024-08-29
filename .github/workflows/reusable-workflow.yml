@@ -12,17 +12,17 @@ on:
         required: true
         type: string
     secrets:
-      ARM_CLIENT_ID:
+      client_id:
         required: true
-      ARM_SUBSCRIPTION_ID:
+      subscription_id:
         required: true
-      ARM_TENANT_ID:
+      tenant_id:
         required: true
 
 env:
-  ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID }}"
-  ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID }}"
-  ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID }}"
+  ARM_CLIENT_ID: "${{ secrets.client_id }}"
+  ARM_SUBSCRIPTION_ID: "${{ secrets.subscription_id }}"
+  ARM_TENANT_ID: "${{ secrets.tenant_id }}"
 
 jobs:
   terraform-plan:
