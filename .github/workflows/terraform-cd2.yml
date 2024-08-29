@@ -7,6 +7,16 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'The environment to deploy to'
+        required: true
+        type: string
+      branch:
+        description: 'The branch to run the apply job on'
+        required: true
+        type: string
 
 permissions:
   id-token: write
@@ -15,6 +25,7 @@ permissions:
 
 jobs:
   deploy-dev:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     uses: ./.github/workflows/reusable-workflow.yml
     with:
       environment: dev
@@ -26,5 +37,13 @@ jobs:
     needs: deploy-dev
     with:
       environment: tst
+      branch: main
+    secrets: inherit
+  
+  deploy-pre:
+    uses: ./.github/workflows/reusable-workflow.yml
+    needs: deploy-test
+    with:
+      environment: pre
       branch: main
     secrets: inherit
