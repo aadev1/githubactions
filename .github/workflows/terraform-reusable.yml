@@ -13,10 +13,10 @@ on:
         type: string
 
 #Special permissions required for OIDC authentication
-permissions:
-  id-token: write
-  contents: read
-  pull-requests: write
+# permissions:
+#   id-token: write
+#   contents: read
+#   pull-requests: write
 
 env:
   # ARM_CLIENT_ID: ${{ secrets['AZURE_CLIENT_ID_${{ inputs.environment | upper }}'] }}
