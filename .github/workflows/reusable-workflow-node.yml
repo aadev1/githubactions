@@ -12,6 +12,14 @@ on:
         required: false
         default: 'true'
         type: boolean
+      environment:
+        description: 'Deployment environment'
+        required: true
+        type: string
+      branch:
+        description: 'Branch to deploy'
+        required: true
+        type: string
 
 jobs:
   build-and-test:
