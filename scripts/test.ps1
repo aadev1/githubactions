@@ -1,12 +1,12 @@
 param (
     [Parameter(Mandatory=$true)]
-    [string]$Name,
+    [string]$Environment,
 
     [Parameter(Mandatory=$false)]
-    [int]$Age
+    [string]$Branch
 )
 
-Write-Host "Hello, $Name!"
-if ($Age) {
-    Write-Host "You are $Age years old."
+Write-Host "Environment, $Environment!"
+if ($Branch) {
+    Write-Host "You are on the $Branch branch."
 }
