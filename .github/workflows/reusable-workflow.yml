@@ -68,7 +68,7 @@ jobs:
     - name: Run Powershell Script
       run: test.ps1 -Name 'Joe' -Age 25
       shell: pwsh
-      working-directory: ./scripts
+      working-directory: scripts
         
     # Save plan to artifacts  
     - name: Publish Terraform Plan
