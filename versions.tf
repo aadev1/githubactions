@@ -25,7 +25,7 @@ terraform {
     # storage_account_name = "aatest1234"
     # container_name       = "tfstatefiles"
     # key                  = "terraform.tfstate"
-    use_oidc             = true
+    # use_oidc             = true
   }
 }
 
