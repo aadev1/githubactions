@@ -64,6 +64,10 @@ jobs:
         else 
           exit 0
         fi
+
+    - name: Run Powershell Script
+      run: ..\scripts\test.ps1 -Name 'Joe' -Age 25
+      shell: pwsh
         
     # Save plan to artifacts  
     - name: Publish Terraform Plan
