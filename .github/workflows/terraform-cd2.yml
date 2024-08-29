@@ -1,4 +1,4 @@
-name: Continuous Deployment
+# name: Continuous Deployment
 
 on:
   push:
@@ -7,16 +7,16 @@ on:
   pull_request:
     branches:
       - main
-  # workflow_dispatch:
-  #   inputs:
-  #     environment:
-  #       description: 'The environment to deploy to'
-  #       required: true
-  #       type: string
-  #     branch:
-  #       description: 'The branch to run the apply job on'
-  #       required: true
-  #       type: string        
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'The environment to deploy to'
+        required: true
+        type: string
+      branch:
+        description: 'The branch to run the apply job on'
+        required: true
+        type: string        
 
 permissions:
   id-token: write
