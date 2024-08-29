@@ -11,18 +11,11 @@ on:
         description: 'The branch to run the apply job on'
         required: true
         type: string
-    secrets:
-      client_id:
-        required: true
-      subscription_id:
-        required: true
-      tenant_id:
-        required: true
 
 env:
-  ARM_CLIENT_ID: "${{ secrets.client_id }}"
-  ARM_SUBSCRIPTION_ID: "${{ secrets.subscription_id }}"
-  ARM_TENANT_ID: "${{ secrets.tenant_id }}"
+  ARM_CLIENT_ID: "${{ secrets.AZURE_CLIENT_ID_DEV }}"
+  ARM_SUBSCRIPTION_ID: "${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}"
+  ARM_TENANT_ID: "${{ secrets.AZURE_TENANT_ID_DEV }}"
 
 jobs:
   terraform-plan:
