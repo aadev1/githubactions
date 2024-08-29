@@ -14,9 +14,17 @@ permissions:
   pull-requests: write
 
 jobs:
-  deploy:
+  deploy-dev:
     uses: ./.github/workflows/reusable-workflow.yml
     with:
       environment: dev
+      branch: main
+    secrets: inherit
+
+  deploy-test:
+    uses: ./.github/workflows/reusable-workflow.yml
+    needs: deploy-dev
+    with:
+      environment: tst
       branch: main
     secrets: inherit
